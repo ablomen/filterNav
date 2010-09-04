@@ -1,0 +1,156 @@
+<!doctype html>
+
+<html lang="en" class="no-js">
+
+<head>
+	<meta charset="utf-8">
+	<title>filterNav Demo</title>
+	
+	<link rel="stylesheet" href="./screen.css" />
+	<link rel="stylesheet" href="./filternav/filternav.css" />
+</head>
+
+<body>
+
+<h1>filterNav</h1>
+
+<h2>Simple Demo</h2>
+
+<div id="demo1">
+	
+	<h3>Sales / Rentals <i>(radiobox style)</i></h3>
+	<div class="demo">
+		<ul class="filterNav" data-name="salesRentals" data-type="single">
+			<li><a href="#" data-value="sales" data-checked="checked">Sales</a></li>
+			<li><a href="#" data-value="rentals">Rentals</a></li>
+			<li><a href="#">Sales (no data-value attribute)</a></li>
+		</ul>
+		<a class="serialize" href="#">Serialize</a> &ndash; <a class="getValue" href="#">Get value</a><br/>
+		<pre class="text"></pre>
+	</div>
+	
+	<h3>City <i>(checkbox style)</i></h3>
+	<div class="demo">
+		<ul class="filterNav" data-name="city" data-type="multiple">
+			<li><a href="#" data-value="amsterdam" data-checked="checked">Amsterdam</a></li>
+			<li><a href="#" data-value="den haag" data-checked="checked">Den Haag</a></li>
+			<li><a href="#" data-value="rotterdam">Rotterdam</a></li>
+			<li><a href="#" data-value="utrecht">Utrecht</a></li>
+		</ul>
+		<a class="serialize" href="#">Serialize</a> &ndash; <a class="getValue" href="#">Get value</a><br/>
+		<pre class="text"></pre>
+	</div>
+	
+	<h3>Rooms <i>(range select)</i></h3>
+	<div class="demo">
+		<ul class="filterNav" data-name="rooms" data-type="range">
+			<li><a href="#" data-value="1">1 rooms</a></li>
+			<li><a href="#" data-value="2">2 rooms</a></li>
+			<li><a href="#" data-value="3">3 rooms</a></li>
+			<li><a href="#" data-value="4">4 rooms</a></li>
+			<li><a href="#" data-value="5">5 rooms</a></li>
+		</ul>
+		<a class="serialize" href="#">Serialize</a> &ndash; <a class="getValue" href="#">Get value</a><br/>
+		<pre class="text"></pre>
+	</div>
+	
+	<h3>Price range <i>(range select, with minimum and maximum values per item)</i></h3>
+	<div class="demo">
+		<ul class="filterNav" data-name="price" data-type="range">
+			<li><a href="#" data-min-value="0" data-max-value="100000">&lt; 100.000</a></li>
+			<li><a href="#" data-min-value="100000" data-max-value="200000" data-checked="checked">100.000 - 200.000</a></li>
+			<li><a href="#" data-min-value="200000" data-max-value="300000">200.000 - 300.000</a></li>
+			<li><a href="#" data-min-value="300000" data-max-value="400000">300.000 - 400.000</a></li>
+			<li><a href="#" data-min-value="400000" data-max-value="500000" data-checked="checked">400.000 - 500.000</a></li>
+			<li><a href="#" data-min-value="500000" data-max-value="99999999">&gt; 500.000</a></li>
+		</ul>
+		<a class="serialize" href="#">Serialize</a> &ndash; <a class="getValue" href="#">Get value</a><br/>
+		<pre class="text"></pre>
+	</div>
+
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="./filternav/filternav.js"></script>
+<script type="text/javascript">
+	var demoPrintR	=	function (input, inputName, indentation) {
+		var type, returnData, i;
+		
+		if (!indentation) {
+			indentation	=	"";
+		}
+		
+		type		=	typeof(input);
+		
+		if (input.constructor.toString().indexOf("Array") > -1){
+			type		=	"array";
+		}
+		
+		returnData	=	indentation + "(" + type + ") " + inputName;
+		
+		switch (type) {
+			case "object":
+				returnData	+=	" {<br>";
+				
+				for (i in input) {
+					if (input.hasOwnProperty(i)) {
+						returnData	+=	demoPrintR(input[i], i, indentation + "&nbsp;&nbsp;");
+					}
+				}
+				
+				returnData	+=	indentation + "}<br>";
+				break;
+			case "array":
+				returnData	+=	" [<br>";
+				
+				for (i = 0; i < input.length; i += 1) {
+					returnData	+=	demoPrintR(input[i], i, indentation + "&nbsp;&nbsp;");
+				}
+				
+				returnData	+=	indentation + "]<br>";
+				break;
+			case "string":
+			case "int":
+				returnData	+=	" = \"" + input + "\"<br>";
+				break;
+		};
+		
+		return returnData;
+		
+	};
+	
+	$(".filterNav").filterNav();
+	$(".demo").each(function ( ) {
+		var $this	=	$(this),
+		    serialize	=	$this.find(".serialize"),
+		    getValue	=	$this.find(".getValue"),
+		    text	=	$this.find(".text"),
+		    filterNav	=	$this.find(".filterNav").filterNav();
+		
+		filterNav
+			.click(function (data) {
+				text.html("Event: clicked<br>" + demoPrintR(data, "data"));
+			})
+			.mouseOver(function (data) {
+				text.html("Event: mouseOver");
+			})
+			.mouseOut(function (data) {
+				text.html("Event: mouseOut");
+			});
+		
+		serialize.click(function ( ) {
+			text.text(filterNav.serialize());
+			return false;
+		});
+		
+		getValue.click(function ( ) {
+			filterNav.val(function (data) {
+				text.html(demoPrintR(data, "data"));
+			});
+			return false;
+		});
+	});
+</script>
+</body>
+
+</html>

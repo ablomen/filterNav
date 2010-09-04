@@ -1,0 +1,88 @@
+/* Remove dots around clicked links */
+.filterNav a:active { outline: none;} .filterNav :focus { -moz-outline-style: none;} .filterNav :-moz-any-link:focus { outline: none;} 
+
+.filterNav {
+	width:			210px;
+	margin:			0;
+	padding:		10px;
+	
+	position:		relative;
+	
+	background:		#ddd;
+	
+	list-style:		none;
+	
+	border-radius:		5px;
+	-moz-border-radius:	5px;
+	-webkit-border-radius:	5px;
+}
+
+.filterNav a {
+	display:		block;
+	
+	width:			200px;
+	height:			16px;
+	
+	margin:			1px 0 0;
+	padding:		5px;
+	
+	color:			#333;
+	line-height:		16px;
+	text-decoration:	none;
+}
+
+.filterNav .active {
+	background:		#3569A0;
+	color:			#fff;
+}
+
+.filterNav .hover {
+	background:		#3C5978;
+	color:			#fff;
+}
+
+.filterNav .single {
+	border-radius:		5px;
+	-moz-border-radius:	5px;
+	-webkit-border-radius:	5px;
+}
+
+.filterNav.multiple .active {
+	background-image:	url(./close.png);
+	background-position:	193px 10px;
+	background-repeat:	no-repeat;
+}
+
+.filterNav .top {
+	height:			16px;
+	line-height:		16px;
+	border-radius:		5px 5px 0 0;
+	-moz-border-radius:	5px 5px 0 0;
+	-webkit-border-top-left-radius:		5px;
+	-webkit-border-top-right-radius:	5px;
+}
+
+.filterNav .middle {
+	height:			17px;
+	line-height:		17px;
+	margin:			0;
+}
+
+.filterNav .bottom {
+	height:			17px;
+	line-height:		17px;
+	margin-top:		0;
+	border-radius:		0 0 5px 5px;
+	-moz-border-radius:	0 0 5px 5px;
+	-webkit-border-bottom-left-radius:	5px;
+	-webkit-border-bottom-right-radius:	5px;
+}
+
+.filterNav .close {
+	width:			14px;
+	height:			14px;
+	position:		absolute;
+	right:			17px;
+	background:		url(./close.png) center center no-repeat;
+	cursor:			pointer;
+}

@@ -1,0 +1,16 @@
+body {
+	font-family:		arial;
+	font-size:		12px;
+}
+
+h3 i {
+	font-size:		10px;
+	font-weight:		normal;
+	color:			#666;
+}
+
+.serialize,
+.getValue {
+	color:			#333;
+	line-height:		20px;
+}
