@@ -18,7 +18,7 @@ Download: [ZIP](http://github.com/ablomen/filterNav/zipball/master) [TAR](http:/
 		<td>17.1kB</td>
 	</tr>
 	<tr>
-		<th>Size (comressed)</th>
+		<th>Size (Minified)</th>
 		<td>11.7kB</td>
 	</tr>
 	<tr>
