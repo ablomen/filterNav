@@ -4,6 +4,7 @@ A jQuery plugin that creates leveled/layered/filter navigation.
 
 Demo is located on: [http://ablomen.nl/filternav/](http://ablomen.nl/filternav/)
 
+Download: [ZIP](http://github.com/ablomen/filterNav/zipball/master) [TAR][http://github.com/ablomen/filterNav/tarball/master]
 
 ## Stats:
 
