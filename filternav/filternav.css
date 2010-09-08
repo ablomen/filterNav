@@ -31,6 +31,12 @@
 	text-decoration:	none;
 }
 
+.filterNav.range a {
+	height:			17px;
+	margin:			0;
+	line-height:		17px;
+}
+
 .filterNav .active {
 	background:		#3569A0;
 	color:			#fff;
@@ -54,8 +60,6 @@
 }
 
 .filterNav .top {
-	height:			16px;
-	line-height:		16px;
 	border-radius:		5px 5px 0 0;
 	-moz-border-radius:	5px 5px 0 0;
 	-webkit-border-top-left-radius:		5px;
@@ -63,15 +67,9 @@
 }
 
 .filterNav .middle {
-	height:			17px;
-	line-height:		17px;
-	margin:			0;
 }
 
 .filterNav .bottom {
-	height:			17px;
-	line-height:		17px;
-	margin-top:		0;
 	border-radius:		0 0 5px 5px;
 	-moz-border-radius:	0 0 5px 5px;
 	-webkit-border-bottom-left-radius:	5px;
