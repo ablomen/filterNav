@@ -15,15 +15,15 @@ Download: [ZIP](http://github.com/ablomen/filterNav/zipball/master) [TAR](http:/
 	</tr>
 	<tr>
 		<th>Size</th>
-		<td>17.1kB</td>
+		<td>18.2kB</td>
 	</tr>
 	<tr>
 		<th>Size (Minified)</th>
-		<td>11.7kB</td>
+		<td>12.6kB</td>
 	</tr>
 	<tr>
 		<th>Tested in</th>
-		<td>Firefox 3.6, Chromium 7, Internet Explorer 8</td>
+		<td>Firefox 3.6, Chromium 7, Internet Explorer 8, Safari 5, Android (1.5) Browser</td>
 	</tr>
 	<tr>
 		<th>License</th>
@@ -113,10 +113,11 @@ Where:<br>
 
 ### Functions & methods:
 
-####$("selector").filterNav();
+####$("selector").filterNav(options);
 
 **Description:**<br>
 Initializes a new instance of filterNav and/or returns the elements instance, if the selector matches multiple elements the first matched element's its instance will be returned<br>
+The options argument is optional, an object, and can contain: {click: function ( ) { }, mouseOut: function ( ) { }, mouseOver: function ( ) { }}, this will set the callback functions of each event for all the matched elements.<br>
 **Returns:**<br>
 filterNav instance<br>
 
