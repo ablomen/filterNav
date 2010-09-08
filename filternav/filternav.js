@@ -119,6 +119,18 @@
 				callbacks.mouseOut	=	callback;
 				
 				return methods;
+			},
+			setOptions:	function (options) {
+				if (options.click) {
+					callbacks.click		=	options.click;
+				}
+				if (options.mouseOver) {
+					callbacks.mouseOver	=	options.mouseOver;
+				}
+				if (options.mouseOut) {
+					callbacks.mouseOut	=	options.mouseOut;
+				}
+				return methods;
 			}
 		};
 		
@@ -288,6 +300,18 @@
 			mouseOut:	function (callback) {
 				callbacks.mouseOut	=	callback;
 				
+				return methods;
+			},
+			setOptions:	function (options) {
+				if (options.click) {
+					callbacks.click		=	options.click;
+				}
+				if (options.mouseOver) {
+					callbacks.mouseOver	=	options.mouseOver;
+				}
+				if (options.mouseOut) {
+					callbacks.mouseOut	=	options.mouseOut;
+				}
 				return methods;
 			}
 		};
@@ -492,6 +516,21 @@
 				callbacks.mouseOut	=	callback;
 				
 				return methods;
+			},
+			setOptions:	function (options) {
+				if (options.click) {
+					callbacks.click		=	options.click;
+				}
+				if (options.close) {
+					callbacks.close		=	options.close;
+				}
+				if (options.mouseOver) {
+					callbacks.mouseOver	=	options.mouseOver;
+				}
+				if (options.mouseOut) {
+					callbacks.mouseOut	=	options.mouseOut;
+				}
+				return methods;
 			}
 		};
 		
@@ -680,7 +719,7 @@
 		return methods;
 	};
 	
-	$.fn.filterNav	=	function ( ) {
+	$.fn.filterNav	=	function (options) {
 		if (this.length > 1) {
 			this.each(function ( ) {
 				var $this;
@@ -696,6 +735,9 @@
 						$this.data("filterNav", filterRange(this));
 					}
 				}
+				if (options) {
+					$this.data("filterNav").setOptions(options);
+				}
 			});
 			return $(this).filter(":first").data("filterNav");
 		} else {
@@ -704,6 +746,9 @@
 			instance	=	this.data("filterNav");
 				
 			if (instance) {
+				if (options) {
+					instance.setOptions(options);
+				}
 				return instance;
 			} else {
 				if (this.attr("data-type") === "single") {
@@ -712,6 +757,9 @@
 					this.data("filterNav", filterMultiple(this[0]));
 				} else if (this.attr("data-type") === "range") {
 					this.data("filterNav", filterRange(this[0]));
+				}
+				if (options) {
+					this.data("filterNav").setOptions(options);
 				}
 				return this.data("filterNav");
 			}
